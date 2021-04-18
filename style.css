@@ -2,3 +2,114 @@
     margin: 0;
     box-sizing: border-box;
 }
+body {
+    background: #061526;
+}
+/* nav  */
+.nav {
+    height: 10vh;
+    background: blueviolet;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.nav_logo {
+    height: 3rem;
+    margin: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.nav_links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.nav_link {
+    font-size: 3rem;
+    margin-right: 2.5rem;
+    text-decoration: none;
+    color: white;
+}
+
+/* welcome page  */
+.welcome_page {
+    height: 90vh;
+    width: 100vw;
+    /* background: aquamarine; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.welcome_message {
+    font-size: 3rem;
+    color: white;
+}
+/* intro page  */
+.intro_page {
+    height: 100vh;
+    width: 100vw;
+    /* background: chocolate; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.Rohit_pic {
+    height: 30rem;
+    margin: 5rem;
+}
+.intro_content {
+    width: 40vw;
+    font-size: 2rem;
+    color: white;
+    /* background: green; */
+}
+
+/* project page  */
+.project_page {
+    height: 100vh;
+    width: 100vw;
+    /* background: burlywood; */
+}
+.project_page_title {
+    height: 10vh;
+    /* background: orchid; */
+    color: white;
+    text-align: center;
+    font-size: 3rem;
+}
+.projects_area {
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.projects_container {
+    margin: 2rem;
+    /* background: aqua; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.project_column {
+    margin: 1rem;
+    /* background: black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.project {
+    height: 18rem;
+    width: 24rem;
+    margin: 0.5rem;
+    background: pink;
+}
