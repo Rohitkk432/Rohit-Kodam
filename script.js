@@ -32,13 +32,14 @@ nav.addEventListener('mouseout',handleHover.bind(1));
 // shutter
 const shutter =document.querySelector('.shutter');
 const openShutter=function(entries,observer){
-    const [entry]=entries
-    if (entry.intersectionRatio ===1){
+    const [entry]=entries;
+    if (entry.intersectionRatio ===1 && entry.time>100){
         setTimeout(()=>shutter.src='./img/25.png',100);
         setTimeout(()=>shutter.src='./img/35.png',200);
         setTimeout(()=>shutter.src='./img/60.png',300);
         setTimeout(()=>shutter.src='./img/80.png',400);
         setTimeout(()=>shutter.src='./img/100.png',500);
+        console.log("error boomer",entry);
         imgObserver.unobserve(shutter);
     }
 };
@@ -47,3 +48,9 @@ const imgObserver=new IntersectionObserver(openShutter,{
     threshold:1,
 });
 imgObserver.observe(shutter);
+
+//init
+const init =function(){
+    shutter.src="./img/0.png"
+};
+init();
