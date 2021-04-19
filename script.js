@@ -28,3 +28,22 @@ const handleHover =function(e){
 }
 nav.addEventListener('mouseover',handleHover.bind(0.6));
 nav.addEventListener('mouseout',handleHover.bind(1));
+
+// shutter
+const shutter =document.querySelector('.shutter');
+const openShutter=function(entries,observer){
+    const [entry]=entries
+    if (entry.intersectionRatio ===1){
+        setTimeout(()=>shutter.src='./img/25.png',100);
+        setTimeout(()=>shutter.src='./img/35.png',200);
+        setTimeout(()=>shutter.src='./img/60.png',300);
+        setTimeout(()=>shutter.src='./img/80.png',400);
+        setTimeout(()=>shutter.src='./img/100.png',500);
+        imgObserver.unobserve(shutter);
+    }
+};
+const imgObserver=new IntersectionObserver(openShutter,{
+    root:null,
+    threshold:1,
+});
+imgObserver.observe(shutter);

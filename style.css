@@ -55,12 +55,32 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
-.Rohit_pic {
+.rohit_photo {
+    position: relative;
     height: 30rem;
-    margin: 5rem;
+    width: 30rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border-radius: 50%;
+}
+.Rohit_pic {
+    height: 29rem;
+    position: relative;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 1;
+}
+.shutter {
+    height: 31rem;
+    position: relative;
+    top: -100%;
+    left: -2%;
+    border-radius: 50%;
+    z-index: 10;
 }
 .intro_content {
     width: 40rem;
