@@ -4,6 +4,7 @@
 }
 body {
     background: #061526;
+    font-family: "Roboto Condensed", sans-serif;
 }
 /* nav  */
 .nav {
@@ -47,8 +48,9 @@ body {
     align-items: center;
 }
 .welcome_message {
-    font-size: 3rem;
+    font-size: 4rem;
     color: white;
+    font-weight: bolder;
 }
 /* intro page  */
 .intro_page {
@@ -85,8 +87,13 @@ body {
 .intro_content {
     width: 40rem;
     margin: 2rem;
+    padding: 2rem;
     font-size: 2rem;
     color: white;
+    border-radius: 20px;
+    background: linear-gradient(to top left, #fc466b, #3f5efb);
+    transform: skewX(-2.5deg);
+    box-shadow: -10px 10px 0px white;
 }
 
 /* project page  */
@@ -140,6 +147,9 @@ body {
 .project_image {
     width: 26rem;
     border-radius: 10px;
+}
+.lazy-img {
+    filter: blur(3px);
 }
 .project_name {
     font-size: 2.4rem;

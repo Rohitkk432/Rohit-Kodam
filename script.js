@@ -40,17 +40,43 @@ const openShutter=function(entries,observer){
         setTimeout(()=>shutter.src='./img/80.png',400);
         setTimeout(()=>shutter.src='./img/100.png',500);
         console.log("error boomer",entry);
-        imgObserver.unobserve(shutter);
+        shutterObserver.unobserve(shutter);
     }
 };
-const imgObserver=new IntersectionObserver(openShutter,{
+const shutterObserver=new IntersectionObserver(openShutter,{
     root:null,
     threshold:1,
 });
-imgObserver.observe(shutter);
+shutterObserver.observe(shutter);
 
 //init
 const init =function(){
     shutter.src="./img/0.png"
 };
 init();
+
+//Lazy loading images
+const imageTargets=document.querySelectorAll('.project_image[data-src]');
+
+const loadImg = function(entries,observer){
+    const[entry]=entries;
+  
+    if(!entry.isIntersecting) return;
+
+    //Replace src with data-src
+    entry.target.src=entry.target.dataset.src;
+
+    entry.target.addEventListener('load',function(){
+        entry.target.classList.remove('lazy-img');
+    });
+  
+    observer.unobserve(entry.target);
+};
+
+const imgObserver = new IntersectionObserver(loadImg,{
+    root:null,
+    threshold:0,
+    rootMargin:'-200px',
+});
+
+imageTargets.forEach(img => imgObserver.observe(img));
