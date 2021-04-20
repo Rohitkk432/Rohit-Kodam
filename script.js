@@ -29,6 +29,8 @@ const handleHover =function(e){
 nav.addEventListener('mouseover',handleHover.bind(0.6));
 nav.addEventListener('mouseout',handleHover.bind(1));
 
+
+//intro_page image
 // shutter
 const shutter =document.querySelector('.shutter');
 const openShutter=function(entries,observer){
@@ -55,6 +57,8 @@ const init =function(){
 };
 init();
 
+
+//Project images 
 //Lazy loading images
 const imageTargets=document.querySelectorAll('.project_image[data-src]');
 
