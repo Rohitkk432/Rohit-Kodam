@@ -59,31 +59,31 @@ init();
 
 
 //Project images 
-//Lazy loading images
-const imageTargets=document.querySelectorAll('.project_image[data-src]');
+// //Lazy loading images
+// const imageTargets=document.querySelectorAll('.project_image[data-src]');
 
-const loadImg = function(entries,observer){
-    const[entry]=entries;
+// const loadImg = function(entries,observer){
+//     const[entry]=entries;
   
-    if(!entry.isIntersecting) return;
+//     if(!entry.isIntersecting) return;
 
-    //Replace src with data-src
-    entry.target.src=entry.target.dataset.src;
+//     //Replace src with data-src
+//     entry.target.src=entry.target.dataset.src;
 
-    entry.target.addEventListener('load',function(){
-        entry.target.classList.remove('lazy-img');
-    });
+//     entry.target.addEventListener('load',function(){
+//         entry.target.classList.remove('lazy-img');
+//     });
   
-    observer.unobserve(entry.target);
-};
+//     observer.unobserve(entry.target);
+// };
 
-const imgObserver = new IntersectionObserver(loadImg,{
-    root:null,
-    threshold:0,
-    rootMargin:'-200px',
-});
+// const imgObserver = new IntersectionObserver(loadImg,{
+//     root:null,
+//     threshold:0,
+//     rootMargin:'-200px',
+// });
 
-imageTargets.forEach(img => imgObserver.observe(img));
+// imageTargets.forEach(img => imgObserver.observe(img));
 
 //reveal sections on scroll
 
