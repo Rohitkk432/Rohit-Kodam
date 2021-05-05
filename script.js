@@ -84,3 +84,22 @@ const imgObserver = new IntersectionObserver(loadImg,{
 });
 
 imageTargets.forEach(img => imgObserver.observe(img));
+
+//reveal sections on scroll
+
+const allSections=document.querySelectorAll('.section');
+const revealSection=function(entries,observer){
+    const[entry]=entries;
+    if(!entry.isIntersecting)return; 
+    entry.target.classList.remove('section-hidden');
+    observer.unobserve(entry.target);
+    console.log(entry.target);
+};
+const sectionObserver= new IntersectionObserver(revealSection,{
+    root:null,
+    threshold:0.10,
+});
+allSections.forEach(function(section){
+    sectionObserver.observe(section);
+    section.classList.add('section-hidden');
+});

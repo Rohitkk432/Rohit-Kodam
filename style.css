@@ -6,6 +6,13 @@ body {
     background: #061526;
     font-family: "Roboto Condensed", sans-serif;
 }
+.section {
+    transition: transform 1s, opacity 1s;
+}
+.section-hidden {
+    opacity: 0;
+    transform: translateY(8rem);
+}
 /* nav  */
 .nav {
     height: 10vh;
