@@ -328,7 +328,10 @@ a {
     .contact {
         width: 22rem;
     }
+    .social {
+        width: 5rem;
+    }
     .credential {
-        width: 6rem;
+        width: 8rem;
     }
 }
