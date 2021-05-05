@@ -62,25 +62,23 @@ body {
 }
 .rohit_photo {
     position: relative;
-    height: 27rem;
-    width: 27rem;
+    height: 24rem;
+    width: 24rem;
     margin-top: 5rem;
     margin-bottom: 5rem;
     border-radius: 50%;
 }
 .Rohit_pic {
     height: 22rem;
-    position: relative;
-    top: 0;
-    left: 0;
+    margin: 1rem;
+    text-align: center;
     border-radius: 50%;
     z-index: 1;
 }
 .shutter {
     height: 24rem;
     position: relative;
-    top: -87%;
-    left: -2%;
+    top: -100%;
     border-radius: 50%;
     z-index: 10;
 }
@@ -116,8 +114,12 @@ body {
     justify-content: center;
     align-items: center;
 }
+.btn_arrow {
+    margin: 15px;
+}
 .projects_container {
     margin: 2rem;
+    margin-top: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -219,4 +221,82 @@ a {
     margin-bottom: 0.75rem;
     font-size: 1.125rem;
     color: white;
+}
+
+@media screen and (max-width: 1242px) {
+    .project_column {
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 1056px) {
+    .intro_page {
+        flex-direction: column;
+    }
+    .rohit_photo {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        height: 20rem;
+    }
+    .Rohit_pic {
+        height: 18rem;
+    }
+    .shutter {
+        height: 20rem;
+    }
+    .intro_content {
+        margin: 1rem;
+        width: 45rem;
+        padding: 1.5rem;
+    }
+}
+@media screen and (max-width: 900px) {
+    .project_column {
+        flex-direction: column;
+    }
+    .intro_content {
+        font-size: 1.4rem;
+        width: 38rem;
+    }
+}
+@media screen and (max-width: 800px) {
+    .contact {
+        width: 31rem;
+    }
+    .credential {
+        width: 20rem;
+    }
+}
+@media screen and (max-width: 750px) {
+    .welcome_message {
+        font-size: 2.8rem;
+    }
+    .nav_link {
+        font-size: 1.8rem;
+    }
+    .intro_content {
+        width: 32rem;
+        padding: 1rem;
+        font-size: 1.3rem;
+    }
+}
+@media screen and (max-width: 650px) {
+    .intro_content {
+        width: 28rem;
+        padding: 1rem;
+        font-size: 1.3rem;
+    }
+    .contact {
+        width: 27rem;
+        height: 4.5rem;
+        margin: 1rem;
+        box-shadow: -10px 10px 0px white;
+    }
+    .social {
+        font-size: 1.3rem;
+    }
+    .credential {
+        width: 14rem;
+        font-size: 1.3rem;
+    }
 }
