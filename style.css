@@ -314,3 +314,14 @@ a {
         width: 12rem;
     }
 }
+@media screen and (max-width: 450px) {
+    .intro_content {
+        width: 20rem;
+    }
+    .contact {
+        width: 22rem;
+    }
+    .credential {
+        width: 10rem;
+    }
+}
