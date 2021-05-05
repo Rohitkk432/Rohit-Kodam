@@ -41,7 +41,7 @@ const openShutter=function(entries,observer){
         setTimeout(()=>shutter.src='./img/60.png',300);
         setTimeout(()=>shutter.src='./img/80.png',400);
         setTimeout(()=>shutter.src='./img/100.png',500);
-        console.log("error boomer",entry);
+        // console.log("error boomer",entry);
         shutterObserver.unobserve(shutter);
     }
 };
