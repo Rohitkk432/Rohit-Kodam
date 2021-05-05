@@ -277,14 +277,14 @@ a {
     .intro_content {
         width: 32rem;
         padding: 1rem;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 }
 @media screen and (max-width: 650px) {
     .intro_content {
-        width: 28rem;
+        width: 24rem;
         padding: 1rem;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
     .contact {
         width: 27rem;
@@ -298,5 +298,19 @@ a {
     .credential {
         width: 14rem;
         font-size: 1.3rem;
+    }
+}
+@media screen and (max-width: 550px) {
+    .nav_link {
+        font-size: 1.6rem;
+    }
+    .btn_arrow {
+        display: none;
+    }
+    .contact {
+        width: 25rem;
+    }
+    .credential {
+        width: 12rem;
     }
 }
