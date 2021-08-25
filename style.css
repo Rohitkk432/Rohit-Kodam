@@ -16,7 +16,8 @@ body {
 /* nav  */
 .nav {
     height: 10vh;
-    background: linear-gradient(to top left, rgba(70, 79, 240, 1), rgba(138, 43, 226, 1));
+    /* background: linear-gradient(to top left, rgba(70, 79, 240, 1), rgba(138, 43, 226, 1)); */
+    background: linear-gradient(to top left, rgba(255, 255, 255, 1), rgba(0, 171, 185, 1));
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -40,24 +41,28 @@ body {
     font-size: 2.2rem;
     margin-right: 2.5rem;
     text-decoration: none;
-    color: white;
+    /* color: white; */
+    color: #061526;
 }
 
 /* welcome page  */
 .welcome_page {
-    background: url(./img/welcome.png);
+    background: url(./img/welcome4.png);
     background-position: center;
     background-size: cover;
     height: 90vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .welcome_message {
+    background-color: rgba(0,0,0,0.6);
     font-size: 3.2rem;
     color: white;
     font-weight: bolder;
+    padding: 0.7rem;
+    border-radius: 8px;
 }
 /* intro page  */
 .intro_page {
