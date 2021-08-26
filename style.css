@@ -57,7 +57,7 @@ body {
     align-items: center;
 }
 .welcome_message {
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     font-size: 3.2rem;
     color: white;
     font-weight: bolder;
@@ -146,6 +146,8 @@ body {
     align-items: center;
 }
 .project {
+    transform: perspective(1000px);
+    transform-style: preserve-3d;
     height: 21rem;
     width: 18rem;
     margin: 1.2rem;
@@ -160,6 +162,7 @@ body {
     flex-shrink: 1;
 }
 .project_image {
+    transform: translateZ(20px);
     width: 19.5rem;
     border-radius: 10px;
 }
@@ -167,11 +170,15 @@ body {
     filter: blur(3px);
 } */
 .project_name {
+    transform: translateZ(20px);
+
     font-size: 1.8rem;
     font-weight: bold;
     margin: 10px;
 }
 .project_info {
+    transform: translateZ(20px);
+
     font-size: 1.2rem;
     text-align: center;
     margin: 3px;
@@ -179,6 +186,9 @@ body {
 a {
     text-decoration: none;
     color: white;
+}
+.weblinks {
+    transform: translateZ(20px);
 }
 .github_link,
 .website_link {
