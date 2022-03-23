@@ -16,8 +16,7 @@ body {
 /* nav  */
 .nav {
     height: 10vh;
-    /* background: linear-gradient(to top left, rgba(70, 79, 240, 1), rgba(138, 43, 226, 1)); */
-    background: linear-gradient(to top left, rgba(255, 255, 255, 1), rgba(0, 171, 185, 1));
+    background: linear-gradient(to top left, #e4bdc2, #9a96b1);
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -47,7 +46,7 @@ body {
 
 /* welcome page  */
 .welcome_page {
-    background: url(./img/welcome4.png);
+    background: url(./img/cover.jpg);
     background-position: center;
     background-size: cover;
     height: 90vh;
@@ -57,7 +56,7 @@ body {
     align-items: center;
 }
 .welcome_message {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(255, 255, 255, 0.1);
     font-size: 3.2rem;
     color: white;
     font-weight: bolder;
@@ -160,6 +159,7 @@ body {
     align-items: center;
     overflow: visible;
     flex-shrink: 1;
+    box-shadow: 0px 0px 0px 5px #061526, 0px 0px 0px 7px violet;
 }
 .project_image {
     transform: translateZ(20px);
