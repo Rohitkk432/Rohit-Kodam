@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 body {
-    background: #061526;
+    background: #060b16;
     font-family: "Roboto Condensed", sans-serif;
 }
 .section {
@@ -16,16 +16,18 @@ body {
 /* nav  */
 .nav {
     height: 10vh;
-    background: linear-gradient(to top left, #e4bdc2, #9a96b1);
+    background: linear-gradient(to top left, #0D0407, #191411);
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    position: relative;
 }
 .nav_logo {
     height: 2.7rem;
     margin: 0.5rem;
     position: absolute;
+    border-radius: 50%;
     top: 0;
     left: 0;
 }
@@ -40,13 +42,12 @@ body {
     font-size: 2.2rem;
     margin-right: 2.5rem;
     text-decoration: none;
-    /* color: white; */
-    color: #061526;
+    color: white;
 }
 
 /* welcome page  */
 .welcome_page {
-    background: url(./img/cover.jpg);
+    background: url(./img/cover2.png);
     background-position: center;
     background-size: cover;
     height: 90vh;
@@ -56,15 +57,15 @@ body {
     align-items: center;
 }
 .welcome_message {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
     font-size: 3.2rem;
-    color: white;
     font-weight: bolder;
     padding: 0.7rem;
     border-radius: 8px;
 }
 /* intro page  */
 .intro_page {
+    height: 100vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -86,13 +87,6 @@ body {
     border-radius: 50%;
     z-index: 1;
 }
-.shutter {
-    height: 24rem;
-    position: relative;
-    top: -100%;
-    border-radius: 50%;
-    z-index: 10;
-}
 .intro_content {
     width: 32rem;
     margin: 3rem;
@@ -101,7 +95,7 @@ body {
     font-size: 1.57rem;
     color: white;
     border-radius: 20px;
-    background: linear-gradient(to top left, #fc466b, #3f5efb);
+    background: linear-gradient(to top left, #290226, #0d1747);
     transform: skewX(-2.5deg);
     box-shadow: -10px 10px 0px white;
 }
@@ -210,10 +204,11 @@ a {
     justify-content: center;
     align-items: center;
     margin: 0.75rem;
-    height: 5.625rem;
-    width: 33.75rem;
+    height: 4.625rem;
+    width: 30.75rem;
     transform: skewX(10deg);
     box-shadow: -14px 14px 0px white;
+    border-radius:8px
 }
 .contact1 {
     background-image: linear-gradient(to top left, #ffb003, #ffcb03);
@@ -225,18 +220,21 @@ a {
     background-image: linear-gradient(to top left, #03a9f4, #464ff0);
 }
 .contact4 {
+    background-image: linear-gradient(to top left, #0088cc, #9fdbf8);
+}
+.contact5 {
     background-image: linear-gradient(to top left, #e52a5a, #ff585f);
 }
 .social {
     font-size: 1.5rem;
     color: white;
-    width: 7.5rem;
+    margin-left: 2rem;
 }
 .credential {
     font-size: 1.5rem;
     text-align: center;
     color: white;
-    width: 22.5rem;
+    flex-grow: 1;
 }
 .footer {
     margin-top: 2rem;
