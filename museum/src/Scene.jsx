@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { Component, Suspense, useEffect, useMemo, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useTexture, SpotLight, MeshReflectorMaterial, RoundedBox, Html } from '@react-three/drei'
 import { EffectComposer, Bloom, DepthOfField, Noise, Vignette, ChromaticAberration } from '@react-three/postprocessing'
@@ -16,9 +16,29 @@ const HAZE = '#1d1416'
 const rand = (a, b) => a + Math.random() * (b - a)
 const tex = t => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 16; return t }
 
+// ---------- one missing image must never blank the whole gallery ----------
+// Each statue / painting loads on its own. If its image fails (e.g. a CDN blip
+// right after a deploy) that piece alone is skipped and retried a few times.
+class Safe extends Component {
+  state = { failed: false, tries: 0 }
+  static getDerivedStateFromError() { return { failed: true } }
+  componentDidCatch() {
+    if (this.state.tries >= 3) return
+    this.timer = setTimeout(() => {
+      useTexture.clear(this.props.url) // drop the cached failure so the retry really refetches
+      this.setState(s => ({ failed: false, tries: s.tries + 1 }))
+    }, 1500 * (this.state.tries + 1))
+  }
+  componentWillUnmount() { clearTimeout(this.timer) }
+  render() { return this.state.failed ? null : <Suspense fallback={null}>{this.props.children}</Suspense> }
+}
+const art = file => `${import.meta.env.BASE_URL}art/${file}`
+const Exhibit = props => <Safe url={art(`${props.e.src}.webp`)}><ExhibitInner {...props} /></Safe>
+const Painting = props => <Safe url={art(`${props.name}.jpg`)}><PaintingInner {...props} /></Safe>
+
 // ---------- a statue: cut-out on a marble podium under its own spotlight ----------
-function Exhibit({ e, x, z, podium = [1.3, 1.2, 1.3], beam = 0.55, stop }) {
-  const map = tex(useTexture(`${import.meta.env.BASE_URL}art/${e.src}.webp`))
+function ExhibitInner({ e, x, z, podium = [1.3, 1.2, 1.3], beam = 0.55, stop }) {
+  const map = tex(useTexture(art(`${e.src}.webp`)))
   const statue = useRef()
   const light = useRef()
   const { camera, scene } = useThree()
@@ -49,8 +69,8 @@ function Exhibit({ e, x, z, podium = [1.3, 1.2, 1.3], beam = 0.55, stop }) {
 }
 
 // ---------- a painting in a gilded frame ----------
-function Painting({ name, position, rotation, h = 2.6, maxW = 4.4, stop }) {
-  const map = tex(useTexture(`${import.meta.env.BASE_URL}art/${name}.jpg`))
+function PaintingInner({ name, position, rotation, h = 2.6, maxW = 4.4, stop }) {
+  const map = tex(useTexture(art(`${name}.jpg`)))
   const a = map.image.width / map.image.height
   let w = h * a, hh = h
   if (w > maxW) { w = maxW; hh = w / a }
