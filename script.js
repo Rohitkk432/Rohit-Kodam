@@ -115,16 +115,23 @@ function animate(shards) {
   });
 
   // ---------- hero intro: shards fly in and assemble ----------
+  // Scrolling is locked until the bust is whole, so the scroll-driven break below
+  // always starts from (and reverses back to) the assembled state.
   const nodes = shards.map(s => s.node);
+  const base = $('.shatter__base');
+  let introDone = false, breakProgress = 0;
+  const syncBase = () => (base.style.opacity = introDone && breakProgress < 0.002 ? 1 : 0); // full image hides hairline seams
+  history.scrollRestoration = 'manual';
+  scrollTo(0, 0);
+  lenis.stop();
   shards.forEach(s => gsap.set(s.node, { ...s.out, autoAlpha: 0 }));
-  gsap.timeline({ delay: 0.2 })
+  gsap.timeline({ delay: 0.2, onComplete: () => { introDone = true; syncBase(); lenis.start(); } })
     .from('.hero__blob', { scale: 0, duration: 1.6, ease: 'expo.out' })
     .to(nodes, { x: 0, y: 0, rotation: 0, scale: 1, autoAlpha: 1, duration: 1.6, ease: 'expo.out', stagger: { amount: 0.6, from: 'random' } }, 0.1)
     .from('.hero__word--top .ch', { yPercent: 110, rotate: 12, duration: 1.2, ease: 'expo.out', stagger: 0.05 }, 0.5)
     .from('.hero__word--bottom .ch', { yPercent: -110, rotate: -12, duration: 1.2, ease: 'expo.out', stagger: 0.05 }, 0.6)
-    .from('.hero__float', { scale: 0, rotation: 60, duration: 1.2, ease: 'back.out(1.8)', stagger: 0.15 }, 0.9)
-    .from('.hero__tag, .hero__edition, .hero__scroll, .nav', { autoAlpha: 0, y: 20, duration: 0.8, stagger: 0.08 }, 1.1)
-    .set('.shatter__base', { opacity: 1 }, 2.4); // hides hairline seams between shards once assembled
+    .from('.hero__float', { scale: 0, duration: 1.2, ease: 'back.out(1.8)', stagger: 0.15 }, 0.9)
+    .from('.hero__tag, .hero__edition, .hero__scroll, .nav', { autoAlpha: 0, y: 20, duration: 0.8, stagger: 0.08 }, 1.1);
 
   // idle float + mouse parallax on the side statues
   gsap.to('.hero__float--a', { y: -24, duration: 3, ease: 'sine.inOut', yoyo: true, repeat: -1 });
@@ -138,20 +145,32 @@ function animate(shards) {
   });
 
   // ---------- hero scroll: the bust breaks apart ----------
+  // Shard positions are a pure function of scroll progress, so scrubbing down and
+  // back up always lands on exactly the same state (no recorded tween start values).
+  const proxy = { p: 0 };
+  shards.forEach(s => (s.t = rand(0, 0.2)));
+  const renderShards = () => {
+    breakProgress = proxy.p;
+    syncBase();
+    if (!introDone) return;
+    shards.forEach(s => {
+      const l = gsap.utils.clamp(0, 1, (proxy.p - s.t) / 0.8), e = l * l;
+      gsap.set(s.node, {
+        x: s.out.x * e, y: s.out.y * e, rotation: s.out.rotation * e, scale: 1 + (s.out.scale - 1) * e,
+        autoAlpha: l < 0.75 ? 1 : 1 - (l - 0.75) / 0.25,
+      });
+    });
+  };
   const breakTl = gsap.timeline({ scrollTrigger: { trigger: '.hero__pin', pin: true, start: 'top top', end: '+=130%', scrub: 1 } });
-  breakTl.set('.shatter__base', { opacity: 0 }, 0.001);
-  shards.forEach(s => {
-    const t = rand(0, 0.2);
-    breakTl.to(s.node, { x: s.out.x, y: s.out.y, rotation: s.out.rotation, scale: s.out.scale, ease: 'power1.in', duration: 1 }, t)
-      .to(s.node, { autoAlpha: 0, duration: 0.25 }, t + 0.75);
-  });
+  breakTl.to(proxy, { p: 1, ease: 'none', duration: 1, onUpdate: renderShards }, 0);
+  const still = { xPercent: 0, yPercent: 0, rotation: 0, scale: 1 };
   breakTl
-    .to('.hero__word--top', { yPercent: -80, scale: 1.2, ease: 'none', duration: 1 }, 0)
-    .to('.hero__word--bottom', { yPercent: 80, scale: 1.2, ease: 'none', duration: 1 }, 0)
-    .to('.hero__float--a', { xPercent: -200, yPercent: 80, rotation: -90, ease: 'power2.in', duration: 1 }, 0)
-    .to('.hero__float--b', { xPercent: 200, yPercent: -80, rotation: 90, ease: 'power2.in', duration: 1 }, 0)
-    .to('.hero__blob', { scale: 2.6, opacity: 0.4, ease: 'none', duration: 1 }, 0)
-    .to('.hero__tag, .hero__edition, .hero__scroll', { autoAlpha: 0, duration: 0.2 }, 0);
+    .fromTo('.hero__word--top', { yPercent: 0, scale: 1 }, { yPercent: -80, scale: 1.2, ease: 'none', duration: 1, immediateRender: false }, 0)
+    .fromTo('.hero__word--bottom', { yPercent: 0, scale: 1 }, { yPercent: 80, scale: 1.2, ease: 'none', duration: 1, immediateRender: false }, 0)
+    .fromTo('.hero__float--a', still, { xPercent: -200, yPercent: 80, rotation: -90, ease: 'power2.in', duration: 1, immediateRender: false }, 0)
+    .fromTo('.hero__float--b', still, { xPercent: 200, yPercent: -80, rotation: 90, ease: 'power2.in', duration: 1, immediateRender: false }, 0)
+    .fromTo('.hero__blob', { scale: 1, opacity: 0.85 }, { scale: 2.6, opacity: 0.4, ease: 'none', duration: 1, immediateRender: false }, 0)
+    .fromTo('.hero__tag, .hero__edition, .hero__scroll', { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.2, immediateRender: false }, 0);
 
   // ---------- manifesto: words light up, image pills pop in ----------
   gsap.set('.manifesto__text .pill', { scale: 0, rotation: -40 });
@@ -233,10 +252,9 @@ function animate(shards) {
   });
 
   // ---------- toolkit: pills fall from the sky and bounce ----------
-  gsap.from('.pile span', {
-    y: () => -innerHeight * rand(0.6, 1.1), rotation: () => rand(-60, 60), autoAlpha: 0,
-    duration: 1.4, ease: 'bounce.out', stagger: { amount: 0.8, from: 'random' },
-    scrollTrigger: { trigger: '.pile', start: 'top 80%' },
+  gsap.fromTo('.pile span', { y: () => -innerHeight * rand(0.6, 1.1), rotation: () => rand(-60, 60), autoAlpha: 0 }, {
+    y: 0, rotation: 0, autoAlpha: 1, duration: 1.4, ease: 'bounce.out', stagger: { amount: 0.8, from: 'random' },
+    scrollTrigger: { trigger: '.pile', start: 'top 80%', toggleActions: 'play none none reverse' },
   });
   gsap.from('.toolkit__title', { yPercent: 50, autoAlpha: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.toolkit__title', start: 'top 85%' } });
   gsap.fromTo('.toolkit__verus', { yPercent: 60, rotation: 15 }, { yPercent: 0, rotation: -5, ease: 'none', scrollTrigger: { trigger: '.toolkit', start: 'top bottom', end: 'bottom bottom', scrub: true } });
