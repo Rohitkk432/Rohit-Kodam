@@ -1,135 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Rohit Kodam</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet" />
-        <script defer src="./script.js"></script>
-        <script src="https://kit.fontawesome.com/f049d5e342.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <div class="nav">
-            <img class="nav_logo" src="./img/logo.png" alt="Logo" />
-            <div class="nav_links">
-                <a rel="noopener" href="#aboutme" class="nav_link">About Me</a>
-                <a rel="noopener" href="#projects" class="nav_link">Projects</a>
-                <a rel="noopener" href="#contacts" class="nav_link">Contact</a>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rohit Kodam — Full Stack AI Engineer</title>
+  <meta name="description" content="Rohit Kodam builds full stack AI products for finance and commerce." />
+  <link rel="icon" href="img/logo.png" />
+  <link rel="preload" as="image" href="img/art/s-bust.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cursor" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" class="nav__mark">RK<span>®</span></a>
+    <nav class="nav__pill">
+      <a href="#about">About</a>
+      <a href="#career">Career</a>
+      <a href="#work">Work</a>
+      <a href="#toolkit">Toolkit</a>
+    </nav>
+    <a href="#contact" class="nav__cta">Let's talk</a>
+  </header>
+
+  <main>
+    <!-- ============ HERO: the shattered emperor ============ -->
+    <section id="top" class="hero">
+      <div class="hero__pin">
+        <div class="hero__blob"></div>
+        <h1 class="hero__name">
+          <span class="hero__word hero__word--top">Rohit</span>
+          <span class="hero__word hero__word--bottom"><em>Kodam</em></span>
+        </h1>
+        <div class="shatter hero__bust" data-src="img/art/s-bust.webp" data-ratio="0.681" data-cols="5" data-rows="6" role="img" aria-label="Marble bust, shattering"></div>
+        <img class="hero__float hero__float--a" src="img/art/s-veiled.webp" alt="" />
+        <img class="hero__float hero__float--b" src="img/art/s-queen.webp" alt="" />
+        <p class="hero__tag"><span class="dot"></span> Full Stack AI Engineer · OnFinance</p>
+        <p class="hero__edition">Portfolio<br /><em>Renaissance Edition</em><br />2026</p>
+        <p class="hero__scroll">Scroll to break things ↓</p>
+      </div>
+    </section>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section id="about" class="manifesto">
+      <p class="kicker">( About )</p>
+      <p class="manifesto__text">
+        I build <span class="pill pill--pink"><img src="img/art/s-constantine.webp" alt="" /></span> full&#8209;stack AI products —
+        from backends that <span class="pill pill--blue"><img src="img/art/s-lion.webp" alt="" /></span> carry the load
+        to interfaces people <em>actually</em> touch. Now crafting AI agents for finance at OnFinance.
+        Before that, two years scaling <span class="pill pill--lime"><img src="img/art/s-woman.webp" alt="" /></span> commerce
+        for India's loudest D2C brands. Economics &amp; CS at BITS Goa. Obsessed with <em>speed</em>, <em>scale</em> &amp; craft.
+      </p>
+    </section>
+
+    <!-- ============ CAREER: stacking panels ============ -->
+    <section id="career" class="career">
+      <p class="kicker">( Career )</p>
+      <div class="stack">
+        <article class="panel panel--pink">
+          <img class="panel__statue" src="img/art/s-constantine.webp" alt="" />
+          <p class="panel__when">Sept 2026 → Now</p>
+          <h2 class="panel__org">OnFinance</h2>
+          <p class="panel__role"><em>Full Stack AI SDE</em></p>
+          <p class="panel__desc">Building NeoGPT-powered AI agents for BFSI compliance teams — regulatory circulars in, assigned &amp; trackable actionables out.</p>
+          <ul class="tags"><li>ComplianceOS</li><li>V2T</li><li>ResearchOS</li></ul>
+        </article>
+        <article class="panel panel--blue">
+          <img class="panel__statue" src="img/art/s-caracalla.webp" alt="" />
+          <p class="panel__when">Jul 2024 → Aug 2026</p>
+          <h2 class="panel__org">TMRW</h2>
+          <p class="panel__role"><em>Software Development Engineer I</em></p>
+          <p class="panel__desc">Led architecture &amp; full-stack builds for multitenant e-commerce behind Bewakoof, Wrogn, Veirdo, Juneberry &amp; more. Migrated legacy stacks to a custom multitenant core, rebuilt order tracking with idempotent crons, owned the Shopify stack and mentored interns.</p>
+        </article>
+        <article class="panel panel--lime">
+          <img class="panel__statue" src="img/art/s-queen.webp" alt="" />
+          <p class="panel__when">Origin story</p>
+          <h2 class="panel__org">BITS Goa</h2>
+          <p class="panel__role"><em>B.E. Computer Science + M.Sc. Economics</em></p>
+          <p class="panel__desc">A dual degree that taught me to think in both systems and markets.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ WORK: throw-away card deck ============ -->
+    <section id="work" class="work">
+      <div class="work__pin">
+        <div class="work__head">
+          <p class="kicker kicker--light">( Selected work )</p>
+          <p class="work__count"><b class="work__idx">01</b> / 08</p>
         </div>
-        <div class="welcome_page">
-            <div class="welcome_message">Hello i am Rohit Kodam</div>
-        </div>
-        <div id="aboutme" class="intro_page section section-hidden">
-            <div class="rohit_photo">
-                <img src="./img/Rohit.jpg" alt="Rohit" class="Rohit_pic" />
+        <div class="deck">
+          <article class="card card--pink">
+            <div class="card__art"><img src="img/art/d-pantheon.jpg" alt="" /></div>
+            <p class="card__org">OnFinance</p>
+            <h3>AI agents for compliance</h3>
+            <p class="card__desc">NeoGPT-powered products that capture regulatory communications and break them into assigned, audit-ready actionables.</p>
+            <ul class="tags"><li>ComplianceOS</li><li>V2T</li><li>ResearchOS</li></ul>
+          </article>
+          <article class="card card--blue">
+            <div class="card__art"><img src="img/art/d-colosseum.jpg" alt="" /></div>
+            <p class="card__org">Wrogn · TMRW</p>
+            <h3>Core Web Vitals, fixed in 4 weeks</h3>
+            <div class="card__stats">
+              <p><b class="count" data-from="4.5" data-to="2.2" data-dec="1">2.2</b><i>s</i><span>LCP, from 4.5s+</span></p>
+              <p><b class="count" data-from="0.25" data-to="0.001" data-dec="3">0.001</b><span>CLS</span></p>
+              <p><b class="count" data-from="2000" data-to="450" data-dec="0">450</b><i>ms</i><span>TTFB, from 2s</span></p>
             </div>
-            <div class="intro_content">
-                I am a Third year B.E. Computer Science + Msc. Economics and Finance student at BITS Pilani, K.K.Birla Goa Campus. I am learning Solana, Rust, Anchor and want to become a Full-Stack
-                Web3 Dev.
+          </article>
+          <article class="card card--lime">
+            <div class="card__art"><img src="img/art/d-temple.jpg" alt="" /></div>
+            <p class="card__org">Veirdo · Wrogn · Juneberry</p>
+            <h3>Growth experiments that paid</h3>
+            <div class="card__stats">
+              <p><b class="count" data-from="0" data-to="9" data-dec="0" data-plus>+9</b><i>%</i><span>conversion · cart progress bar</span></p>
+              <p><b class="count" data-from="0" data-to="4" data-dec="0" data-plus>+4</b><i>%</i><span>conversion · PDP offers</span></p>
+              <p><b class="count" data-from="0" data-to="2.2" data-dec="1" data-plus>+2.2</b><i>%</i><span>conversion · Cart Add X</span></p>
             </div>
-        </div>
-        <div id="projects" class="project_page section section-hidden">
-            <div class="project_page_title">Projects</div>
-            <div class="projects_area">
-                <div class="left_arrow btn_arrow"><img height="37px" src="./img/left arrow.png" alt="left arrow" /></div>
-                <div class="projects_container">
-                    <div class="project_column">
-                        <div class="project" data-tilt data-tilt-max="10" data-tilt-scale="1.1">
-                            <img src="./img/MusicProX.png" alt="MusicProX" class="project_image" />
-                            <div class="project_name">Music Pro X</div>
-                            <div class="project_info">Music Player website using PERN stack, for DevSoc Hackathon. Checkout repo and Website.</div>
-                            <div class="weblinks">
-                                <a rel="noopener" class="github_link" target="_blank" href="https://github.com/Rohitkk432/Music-Pro-X"><i class="fab fa-github"></i></a>
-                                <a rel="noopener" class="website_link" target="_blank" href="https://musicprox.netlify.app/"><i class="fas fa-globe"></i></a>
-                            </div>
-                        </div>
-                        <div class="project" data-tilt data-tilt-max="10" data-tilt-scale="1.1">
-                            <img src="./img/hero-world.png" alt="Hero-World" class="project_image" />
-                            <div class="project_name">Hero-World</div>
-                            <div class="project_info">Web3 Project in ethers.js. Create a hero, fight in duels, summon heroes with summoning cards</div>
-                            <div class="weblinks">
-                                <a rel="noopener" class="github_link" target="_blank" href="https://github.com/Rohitkk432/Hero-World"><i class="fab fa-github"></i></a>
-                                <a rel="noopener" class="website_link" target="_blank" href="https://hero-world-web3.netlify.app/"><i class="fas fa-globe"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project_column">
-                        <div class="project" data-tilt data-tilt-max="10" data-tilt-scale="1.1">
-                            <img src="./img/Buildoor.png" alt="Buildoor" class="project_image" />
-                            <div class="project_name">Buildoor</div>
-                            <div class="project_info">Buildspace SPL tokens, NFT project. Learning Rust, Solana. Mint your buildoor. Earn...</div>
-                            <div class="weblinks">
-                                <a rel="noopener" class="github_link" target="_blank" href="https://github.com/Rohitkk432/Buildoor"><i class="fab fa-github"></i></a>
-                                <a rel="noopener" class="website_link" target="_blank" href="https://buildoor-two.vercel.app/"><i class="fas fa-globe"></i></a>
-                            </div>
-                        </div>
-                        <div class="project" data-tilt data-tilt-max="10" data-tilt-scale="1.1">
-                            <img src="./img/itasakimasu1.png" alt="itadakimasu" class="project_image" />
-                            <div class="project_name">itadakimasu</div>
-                            <div class="project_info">Food Delivery website for DevSoc core-reviews, using MERNG (graphql), Material-UI, Apollo.</div>
-                            <div class="weblinks">
-                                <a rel="noopener" class="github_link" target="_blank" href="https://github.com/Rohitkk432/Itadakimasu"><i class="fab fa-github"></i></a>
-                                <a rel="noopener" class="website_link" target="_blank" href="https://itadakimasu432.netlify.app/"><i class="fas fa-globe"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project_column">
-                        <div class="project" data-tilt data-tilt-max="10" data-tilt-scale="1.1">
-                            <img src="./img/ResourceHUB.png" alt="ResourceHUB" class="project_image" />
-                            <div class="project_name">ResourceHUB</div>
-                            <div class="project_info">One stop solution for resource lists. DevFest 2.0 hackathon project using MERN stack.</div>
-                            <div class="weblinks">
-                                <a rel="noopener" class="github_link" target="_blank" href="https://github.com/Rohitkk432/ResourceHub"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                        <div class="project" data-tilt data-tilt-max="10" data-tilt-scale="1.1">
-                            <img src="./img/Bon-Appetit.png" alt="BonAppetit" class="project_image" />
-                            <div class="project_name">Bon-Appetit</div>
-                            <div class="project_info">Food delivery website, using PERN stack along with React-Redux. First try at making Food delivery Website.</div>
-                            <div class="weblinks">
-                                <a rel="noopener" class="github_link" target="_blank" href="https://github.com/Rohitkk432/Bon-Appetit"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="right_arrow btn_arrow"><img height="37px" src="./img/right arrow.png" alt="right arrow" /></div>
+          </article>
+          <article class="card card--orange">
+            <div class="card__art"><img src="img/art/d-arch.jpg" alt="" /></div>
+            <p class="card__org">TMRW · Nautinati</p>
+            <h3>Multitenant B2B returns</h3>
+            <div class="card__stats"><p><b>Zero</b><span>downtime onboarding Nautinati</span></p></div>
+            <p class="card__desc">Order-to-warehouse RMS synced with Shopify, plus a configurable Shopify app with hybrid data fetching and secure session auth.</p>
+          </article>
+          <article class="card card--pink">
+            <div class="card__art"><img src="img/art/d-rotunda.jpg" alt="" /></div>
+            <p class="card__org">TMRW</p>
+            <h3>Communication module</h3>
+            <div class="card__stats">
+              <p><b class="count" data-from="0" data-to="15" data-dec="0">15</b><i>+</i><span>email templates</span></p>
+              <p><b class="count" data-from="0" data-to="52" data-dec="0">52</b><i>+</i><span>SMS templates</span></p>
             </div>
+          </article>
+          <article class="card card--blue">
+            <div class="card__art"><img src="img/art/d-interior.jpg" alt="" /></div>
+            <p class="card__org">Nucleus Admin Panel</p>
+            <h3>High-volume data pipelines</h3>
+            <p class="card__desc">Bulk CSV import/export on streaming exports and batch-insert jobs — heavy lifting without crushing the database.</p>
+          </article>
+          <article class="card card--lime">
+            <div class="card__art"><img src="img/art/d-temple2.jpg" alt="" /></div>
+            <p class="card__org">Bewakoof</p>
+            <h3>Checkout &amp; coupons</h3>
+            <p class="card__desc">Full-stack Selective Checkout, dynamic delivery messaging, tighter cart-coupon enforcement and fixed return tracking.</p>
+          </article>
+          <article class="card card--orange">
+            <div class="card__art"><img src="img/art/d-arch2.jpg" alt="" /></div>
+            <p class="card__org">Juneberry</p>
+            <h3>Website launch</h3>
+            <p class="card__desc">Led the Juneberry launch end to end — first commit to live storefront.</p>
+          </article>
         </div>
-        <div id="contacts" class="contact_page section section-hidden">
-            <div class="contact contact1">
-                <div class="social">Email:</div>
-                <div class="credential">rohitkodam4@gmail.com</div>
-            </div>
-            <a rel="noopener" href="https://github.com/Rohitkk432" target="_blank" class="contact contact2">
-                <div class="social">Github:</div>
-                <div class="credential">
-                    <i class="fab fa-github"></i>
-                </div>
-            </a>
-            <a rel="noopener" href="https://www.linkedin.com/in/rohit-kodam-b81b95204/" target="_blank" class="contact contact3">
-                <div class="social">LinkedIn:</div>
-                <div class="credential">
-                    <i class="fab fa-linkedin-in"></i>
-                </div>
-            </a>
-            <a rel="noopener" href="https://t.me/ryuk_432" target="_blank" class="contact contact4">
-                <div class="social">Telegram:</div>
-                <div class="credential">
-                    <i class="fab fa-telegram"></i>
-                </div>
-            </a>
-            <a rel="noopener" href="https://www.instagram.com/ryuk_432/" target="_blank" class="contact contact5">
-                <div class="social">Instagram:</div>
-                <div class="credential">
-                    <i class="fab fa-instagram"></i>
-                </div>
-            </a>
-            <div class="footer">Made with ☕ and 💖 by Rohit !</div>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.1/vanilla-tilt.min.js"></script>
-    </body>
+        <img class="work__flyer" src="img/art/s-augustus.webp" alt="" />
+      </div>
+    </section>
+
+    <!-- ============ VELOCITY MARQUEE ============ -->
+    <section class="ticker" aria-hidden="true">
+      <div class="ticker__row"><div class="ticker__inner"><span>AI agents</span><span class="o">Commerce</span><span>Scale</span><span class="o">Speed</span><span>Craft</span></div></div>
+      <div class="ticker__row ticker__row--rev"><div class="ticker__inner"><span class="o">Backend</span><span>Frontend</span><span class="o">Systems</span><span>Shipping</span><span class="o">LLMs</span></div></div>
+    </section>
+
+    <!-- ============ TOOLKIT: falling pills ============ -->
+    <section id="toolkit" class="toolkit">
+      <p class="kicker">( Toolkit )</p>
+      <h2 class="toolkit__title">Tools of the <em>trade</em></h2>
+      <div class="pile">
+        <span>TypeScript</span><span>Python</span><span>Rust</span><span>Java</span><span>C++</span><span>LLMs</span><span>AI Agents</span>
+        <span>React</span><span>Next.js</span><span>NestJS</span><span>Node.js</span><span>Shopify</span><span>GraphQL</span><span>Django</span>
+        <span>PostgreSQL</span><span>MongoDB</span><span>Kafka</span><span>Docker</span><span>Kubernetes</span><span>Distributed Systems</span>
+      </div>
+      <img class="toolkit__verus" src="img/art/s-verus.webp" alt="" />
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact">
+      <img class="contact__lion" src="img/art/s-lion.webp" alt="" />
+      <p class="kicker kicker--dark">( Contact )</p>
+      <h2 class="contact__title"><span>Say</span> <em>hello</em><span>.</span></h2>
+      <button class="contact__mail" type="button" data-email="rohitkodam4@gmail.com">rohitkodam4@gmail.com <small>click to copy</small></button>
+      <ul class="contact__links">
+        <li><a href="https://github.com/Rohitkk432" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="https://www.linkedin.com/in/rohit-kodam-b81b95204/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://x.com/rohitkk432" target="_blank" rel="noopener">X ↗</a></li>
+        <li><a href="https://www.instagram.com/ryuk_432/" target="_blank" rel="noopener">Instagram ↗</a></li>
+      </ul>
+      <footer class="footer">
+        <span>© 2026 Rohit Kodam</span>
+        <span>Sculptures &amp; paintings: The Metropolitan Museum of Art, Open Access (CC0)</span>
+      </footer>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>
