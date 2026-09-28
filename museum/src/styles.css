@@ -5,22 +5,18 @@
   --caps: "Cinzel", serif;
   --serif: "Cormorant Garamond", Georgia, serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
-  --bar: 10.5vh;
+  --bar: 7vh;
   --pad: clamp(16px, 4vw, 56px);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { overflow-x: clip; }
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-.lenis.lenis-stopped { overflow: hidden; }
-body { background: var(--ink); color: var(--paper); font-family: var(--serif); -webkit-font-smoothing: antialiased; }
+body { overflow: hidden; overscroll-behavior: none; touch-action: none; background: var(--ink); color: var(--paper); font-family: var(--serif); -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 em { font-style: italic; }
 ::selection { background: var(--gold); color: var(--ink); }
 
 .stage { position: fixed; inset: 0; }
-.spacer { height: 2800vh; }
 
 /* ---------- letterbox ---------- */
 .bar { position: fixed; left: 0; right: 0; z-index: 20; background: #000; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--pad); overflow: hidden; }
@@ -116,4 +112,57 @@ em { font-style: italic; }
   .placard__piece { margin-top: 10px; padding-top: 8px; font-size: 11px; }
   .cast > div { grid-template-columns: 1fr; gap: 2px; }
   .cast dt, .cast dd { text-align: center; }
+}
+
+/* ---------- walkable version ---------- */
+.stage canvas { cursor: grab; }
+.stage canvas:active { cursor: grabbing; }
+.bar__actions { display: flex; gap: 6px; }
+.bar__actions button, .fin__back { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: rgba(239, 232, 220, .75); background: none; border: 1px solid rgba(239, 232, 220, .2); padding: 7px 12px; cursor: pointer; transition: color .3s, border-color .3s, background .3s; }
+.bar__actions button:hover, .fin__back:hover { color: var(--gold); border-color: var(--gold); }
+.bar__cta { background: var(--gold) !important; color: #000 !important; border-color: var(--gold) !important; }
+.hint { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: rgba(239, 232, 220, .55); }
+.hint kbd { font-family: inherit; color: var(--gold); }
+.hint--touch { display: none; }
+@media (hover: none) { .hint--desk { display: none; } .hint--touch { display: inline; } }
+
+/* labels under exhibits */
+.marker {
+  display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; cursor: pointer;
+  font-family: var(--caps); font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  padding: 7px 13px 7px 10px; border-radius: 999px; border: 1px solid rgba(216, 179, 106, .7);
+  background: rgba(12, 9, 10, .72); color: var(--paper); backdrop-filter: blur(6px); transition: background .3s, color .3s, transform .3s, opacity .3s;
+}
+.marker:hover, .marker.is-on { background: var(--gold); color: #000; transform: scale(1.06); }
+.marker__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 0 rgba(216, 179, 106, .7); animation: ping 2s infinite; }
+.marker:hover .marker__dot, .marker.is-on .marker__dot { background: #000; }
+.marker--work { border-color: rgba(200, 90, 100, .8); }
+.marker--work .marker__dot { background: #e0707c; }
+@keyframes ping { 70% { box-shadow: 0 0 0 8px rgba(216, 179, 106, 0); } 100% { box-shadow: 0 0 0 0 rgba(216, 179, 106, 0); } }
+
+/* panel extras */
+.placard-wrap { pointer-events: none; }
+.placard { position: relative; pointer-events: auto; max-height: calc(100vh - var(--bar) * 2 - 24px); overflow-y: auto; }
+.placard__close { position: absolute; top: 10px; right: 12px; border: 0; background: none; font-size: 26px; line-height: 1; cursor: pointer; color: inherit; opacity: .55; }
+.placard__close:hover { opacity: 1; }
+.placard__nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 16px; }
+.placard__nav button { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; background: none; border: 1px solid currentColor; color: inherit; opacity: .7; padding: 7px 10px; cursor: pointer; }
+.placard__nav button:hover { opacity: 1; }
+
+/* exhibit index */
+.index { position: fixed; top: calc(var(--bar) + 8px); right: var(--pad); z-index: 25; width: min(360px, 92vw); max-height: 70vh; overflow-y: auto; padding: 18px; background: rgba(12, 9, 10, .92); border: 1px solid rgba(216, 179, 106, .35); backdrop-filter: blur(10px); }
+.index p { font-family: var(--caps); font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin: 10px 0 6px; }
+.index button { display: block; width: 100%; text-align: left; background: none; border: 0; color: var(--paper); font-family: var(--serif); font-size: 17px; padding: 6px 4px; cursor: pointer; border-bottom: 1px solid rgba(239, 232, 220, .08); }
+.index button b { font-family: var(--mono); font-weight: 400; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(239, 232, 220, .5); margin-right: 8px; }
+.index button:hover { color: var(--gold); }
+.fin__back { position: absolute; top: calc(var(--bar) + 16px); left: var(--pad); z-index: 2; }
+.credits { z-index: 22; }
+
+@media (max-width: 760px) {
+  :root { --bar: 8vh; }
+  .bar__actions button { padding: 6px 8px; font-size: 9px; }
+  .bar__actions button:first-child { display: none; }
+  .hint { font-size: 10px; }
+  .marker { font-size: 9px; padding: 5px 10px 5px 8px; }
+  .placard { max-height: 52vh; }
 }
